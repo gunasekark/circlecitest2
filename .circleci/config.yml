@@ -1,0 +1,161 @@
+version: 2
+
+jobs:
+  # Build & Deploy against development backend
+  "build-dev":
+    docker:
+      - image: python:2.7.12
+    steps:
+      # Initialization.
+      - checkout
+      # Build of Docker image.
+      - run:
+          name: testing tag
+          command: |
+            echo "dev job"
+            echo "python test"
+
+      # Deployment.
+      - deploy:
+          command: |
+            python nosetest.py
+            echo "dev deploy"
+
+  "build-dev-core":
+    docker:
+      - image: python:2.7.12
+    steps:
+      # Initialization.
+      - checkout
+      # Build of Docker image.
+      - run:
+          name: testing tag
+          command: |
+            echo "dev core job"
+            echo "python test"
+
+      # Deployment.
+      - deploy:
+          command: |
+            python nosetest.py
+            echo "dev core deploy"
+          
+  # Build & Deploy against production backend
+  "build-prod":
+    docker:
+      - image: python:2.7.12
+    steps:
+      # Initialization.
+      - checkout
+      # Build of Docker image.
+      - run:
+          name: testing tag
+          command: |
+            echo "prod job"
+            echo "python test"
+
+      # Deployment.
+      - deploy:
+          command: |
+            python nosetest.py
+            echo "prod deploy"
+
+  "build-prod-core":
+    docker:
+      - image: python:2.7.12
+    steps:
+      # Initialization.
+      - checkout
+      # Build of Docker image.
+      - run:
+          name: testing tag
+          command: |
+            echo "prod core job"
+            echo "python test"
+
+      # Deployment.
+      - deploy:
+          command: |
+            python nosetest.py
+            echo "prod core deploy"
+
+  # Build & Deploy against QA backend
+  "build-qa":
+    docker:
+      - image: python:2.7.12
+    steps:
+      # Initialization.
+      - checkout
+      # Build of Docker image.
+      - run:
+          name: testing tag
+          command: |
+            echo "qa job"
+            echo "python test"
+
+      # Deployment.
+      - deploy:
+          command: |
+            python nosetest.py
+            echo "qa deploy"
+  "build-qa-core":
+    docker:
+      - image: python:2.7.12
+    steps:
+      # Initialization.
+      - checkout
+      # Build of Docker image.
+      - run:
+          name: testing tag
+          command: |
+            echo "qa core job"
+            echo "python test"
+
+      # Deployment.
+      - deploy:
+          command: |
+            python nosetest.py
+            echo "qa core deploy"
+          
+workflows:
+  version: 2
+  build:
+    jobs:
+      # Development builds are executed on "develop" branch only.
+      - "build-dev":
+          filters:
+            tags:
+              only: /API-*-DEV/
+
+      # Production builds are exectuted only on tagged commits to the
+      # master branch.
+      - "build-prod":
+          filters:
+            tags:
+              only: /API-*-PROD/ 
+
+      # Development builds are executed on "qa" branch only.
+      - "build-qa":
+          filters:
+            tags:
+              only: /API-*-QA/
+
+      # Development builds are executed on "develop" branch only.
+      - "build-dev-core":
+          filters:
+            tags:
+              only: /COR-*-DEV/
+
+      # Production builds are exectuted only on tagged commits to the
+      # master branch.
+      - "build-prod-core":
+          filters:
+            tags:
+              only: /COR-*-PROD/
+
+      # Development builds are executed on "qa" branch only.
+      - "build-qa-core":
+          filters:
+            tags:
+              only: /COR-*-QA/
+
