@@ -125,37 +125,37 @@ workflows:
       - "build-dev":
           filters:
             tags:
-              only: /API-*-DEV/
+              only: /^API-.*.-DEV$/
 
       # Production builds are exectuted only on tagged commits to the
       # master branch.
       - "build-prod":
           filters:
             tags:
-              only: /API-*-PROD/ 
+              only: /^API-.*.-PROD$/ 
 
       # Development builds are executed on "qa" branch only.
       - "build-qa":
           filters:
             tags:
-              only: /API-*-QA/
+              only: /^API-.*.-QA$/
 
       # Development builds are executed on "develop" branch only.
       - "build-dev-core":
           filters:
             tags:
-              only: /COR-*-DEV/
+              only: /^COR-.*.-DEV$/
 
       # Production builds are exectuted only on tagged commits to the
       # master branch.
       - "build-prod-core":
           filters:
             tags:
-              only: /COR-*-PROD/
+              only: /^COR-.*.-PROD$/
 
       # Development builds are executed on "qa" branch only.
       - "build-qa-core":
           filters:
             tags:
-              only: /COR-*-QA/
+              only: /^COR-.*.-QA$/
 
