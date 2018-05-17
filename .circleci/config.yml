@@ -4,7 +4,8 @@ jobs:
   # Build & Deploy against development backend
   "build-dev":
     docker:
-      - image: python:2.7.12
+      # - image: python:2.7.12
+      - image: node:5.10.1
     steps:
       # Initialization.
       - checkout
