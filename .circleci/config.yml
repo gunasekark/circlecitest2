@@ -15,7 +15,7 @@ jobs:
           command: |
             echo "dev job"
             echo "python test"
-            cat /etc/*-reelases
+            cat /etc/*-releases
 
       # Deployment.
       - deploy:
