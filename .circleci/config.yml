@@ -24,6 +24,12 @@ jobs:
             echo $var1
             echo $var2
             echo $var3
+      - run:
+          name: testing e232ee tag
+          command: |
+            echo $var1
+            echo $var2
+            echo $var3            
       # Deployment.
       - deploy:
           command: |
