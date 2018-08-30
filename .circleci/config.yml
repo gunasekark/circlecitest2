@@ -17,10 +17,13 @@ jobs:
             echo "python test"
             cat /etc/*-release
             echo $var1
+            /bin/bash abc.sh
       - run:
           name: testing eee tag
           command: |
             echo $var1
+            echo $var2
+            echo $var3
       # Deployment.
       - deploy:
           command: |
