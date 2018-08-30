@@ -5,11 +5,15 @@ jobs:
   "build-dev":
     docker:
       # - image: python:2.7.12
-      - image: node:5.10.1
+      # - image: node:5.10.1
+      - image: docker:17.11.0-ce-git
     steps:
       # Initialization.
       - checkout
       # Build of Docker image.
+      - run:
+          name: Installation of build dependencies.
+          command: apk add --no-cache bash      
       - run:
           name: testing tag
           command: |
