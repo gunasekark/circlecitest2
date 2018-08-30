@@ -13,7 +13,9 @@ jobs:
       # Build of Docker image.
       - run:
           name: Installation of build dependencies.
-          command: apk add --no-cache bash      
+          command: |
+            apk add --no-cache bash curl     
+            curl -sSL https://s3.amazonaws.com/circle-downloads/install-circle-env.sh | bash
       - run:
           name: testing tag
           command: |
