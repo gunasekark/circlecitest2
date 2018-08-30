@@ -6,7 +6,7 @@ jobs:
     docker:
       # - image: python:2.7.12
       # - image: node:5.10.1
-      - image: docker:17.11.0-ce-git
+      - image: docker:18.06.1-ce-git
     steps:
       # Initialization.
       - checkout
