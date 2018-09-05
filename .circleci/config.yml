@@ -31,7 +31,9 @@ jobs:
             echo $var2
             echo $var3
             echo $var4c
-            echo $var5c           
+            echo $var5c 
+            echo $var6
+            echo $var7             
       - run:
           name: testing e232ee tag
           command: |
@@ -39,7 +41,9 @@ jobs:
             echo $var2
             echo $var3  
             echo $var4c
-            echo $var5c              
+            echo $var5c
+            echo $var6
+            echo $var7             
       # Deployment.
       - deploy:
           command: |
